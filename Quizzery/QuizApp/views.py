@@ -192,7 +192,50 @@ def quiz(request):
         var = request.GET['quiz_id']
         p = QuizExamTable.objects.filter(quiz_id=var)
         c= QuizTable.objects.filter(quiz_id=var)
-        # for x in c:
+        for x in c:
+            s=str(x.start_time)
+            e=str(x.end_time)
+            print(s)
+            print(e)
+            print(date)
+            date1=str(date)
+            sy=int(s[:4])
+            sm=int(s[5:7])
+            sd=int(s[8:10])
+            sh=int(s[11:13])
+            ss=int(s[14:16])
+            ey = int(e[:4])
+            em = int(e[5:7])
+            ed = int(e[8:10])
+            eh = int(e[11:13])
+            es = int(e[14:16])
+            dy = int(date1[:4])
+            dm = int(date1[5:7])
+            dd = int(date1[8:10])
+            dh = int(date1[11:13])
+            ds = int(date1[14:16])
+            print(sy,sm,sd,sh,ss,ey,em,ed,eh,ed,dy,dm,dd,dh,ds)
+            if (sy>dy or sm>dm or sd>dd) :
+                
+                return HttpResponse('Quiz not Started')
+            if sy==dy or sm==dm or sd==dd: 
+                if (sh >= dh and ss > ds):
+                    return HttpResponse('Quiz not Started')
+
+            if (ey<dy or em<dm or ed<dd) :
+                data = QuizExamTable.objects.filter(quiz_id=var)
+                context = {
+                   'leaderboard': data
+                   }
+                return render(request, 'userdashboard.html', context)
+            if (ey==dy or em==dm or ed==dd) :
+                if (eh <= dh and es < ds):
+                    data1 = QuizExamTable.objects.filter(quiz_id=var)
+                    context = {
+                    'leaderboard': data1
+                }
+                    return render(request, 'userdashboard.html', context)
+
         #     start_time = x.start_time.replace(tzinfo=utc)
 
         #     end_time = x.end_time.replace(tzinfo=utc)
@@ -273,7 +316,8 @@ def quiz(request):
             'total': total,
             'score': scorer,
             'percentage': res,
-            'incorrect': incorrect
+            'incorrect': incorrect,
+            'quiz_id':r
 
         }
         QuizExamTable.objects.create(
