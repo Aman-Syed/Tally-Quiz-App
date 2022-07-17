@@ -1,0 +1,257 @@
+{% block content %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    {% load static %}
+
+    <title>Quizzery</title>
+    <style>
+        #body {
+            background-image: url("{% static 'images\b.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #container12 {
+            margin: auto;
+            margin-top: 40px;
+            width: 40%;
+        }
+
+        .card {
+            width: 320px;
+            border: 3px black solid
+        }
+
+        .card-body {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 40px;
+            font-size: 22px;
+        }
+
+        .card-text {
+            font-size: 22px;
+        }
+
+        #end {
+            margin-top: 30px;
+            font-size: 23px;
+            font-weight: 600;
+        }
+
+        #return {
+            color: white;
+            background-color: #343a40;
+            height: 40px;
+            width: 100px;
+            border-radius: 6%;
+            border-width: 0px;
+            transition: all 0.2s linear;
+            margin-right: 40px;
+            font-size: 16px;
+        }
+
+        #return:hover {
+            border: solid 2px #343a40;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .btn {
+                transition: none
+            }
+        }
+
+        .btn:hover {
+            color: #212529;
+            text-decoration: none
+        }
+
+        .btn.focus,
+        .btn:focus {
+            outline: 0;
+            box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+        }
+
+        .btn.disabled,
+        .btn:disabled {
+            opacity: .65
+        }
+
+        a.btn.disabled,
+        fieldset:disabled a.btn {
+            pointer-events: none
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0069d9;
+            border-color: #0062cc
+        }
+
+        .btn-primary.focus,
+        .btn-primary:focus {
+            box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .5)
+        }
+
+        .btn-primary.disabled,
+        .btn-primary:disabled {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff
+        }
+
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .show>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #0062cc;
+            border-color: #005cbf
+        }
+
+        .btn-primary:not(:disabled):not(.disabled).active:focus,
+        .btn-primary:not(:disabled):not(.disabled):active:focus,
+        .show>.btn-primary.dropdown-toggle:focus {
+            box-shadow: 0 0 0 .2rem rgba(38, 143, 255, .5)
+        }
+
+        #Mail-link {
+            text-decoration: none !important;
+            font-size: 25px;
+            color: black;
+        }
+
+
+
+        @media all and (max-width:600px) {
+            #container12 {
+
+                margin: auto;
+                margin-top: 30px;
+
+            }
+
+            .card {
+                width: 240px;
+                border: 3px black solid
+            }
+
+            h3 {
+                margin-left: 40px;
+                font-size: 20px;
+            }
+
+            .card-text {
+                font-size: 19px;
+            }
+
+            #end {
+                margin-top: 30px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        @media all and (max-width:430px) {
+            #container12 {
+                margin: auto;
+                margin-top: 30px;
+                width: 66%;
+
+            }
+
+            #end {
+                margin-top: 30px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    </style>
+
+</head>
+
+<body id="body">
+
+    <div id="container12">
+        <div class="card">
+
+            <div class="card-body">
+                <h3 class="card-title">Score: {{score}}</h3>
+                <p class="card-text">Total questions: {{total}}</p>
+
+
+
+                <p class="card-text">Correct answers: {{score}}</p>
+                <p class="card-text">Incorrect answers: {{incorrect}}</p>
+                <p class="card-text">Percentage: {{percentage}}%</p>
+
+
+            </div>
+        </div>
+        <br>
+        <textarea id="content"
+            style="visibility: hidden;">http://127.0.0.1:8000/hometaker/quiz/?quiz_id={{quiz}}</textarea>
+        <br>
+        <button class="btn btn-primary" onclick="copyToClipboard()">Copy link</button>
+        <!-- <button class="btn btn-primary">Mail link</button> -->
+        <br>
+        <p style="visibility: hidden;" id="link">http://127.0.0.1:8000/hometaker/quiz/?quiz_id={{quiz}}</p>
+        <a href="mailto:?subject=Your Quiz link&amp;body=http://127.0.0.1:8000/hometaker/quiz/?quiz_id={{quiz}}."
+            title="Share by Email" id="Mail-link">
+            <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">(Mail link)
+        </a>
+        <p id="end">Create More !!..<br>Lets Go to home</p>
+        <a href="/home"> <button id="return">Quizzery</button></a>
+
+    </div>
+
+
+
+
+
+    {% endblock %}
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("content").value;
+            navigator.clipboard.writeText(copyText).then(() => {
+                // Alert the user that the action took place.
+                // Nobody likes hidden stuff being done under the hood!
+                alert("Copied to clipboard");
+            });
+        }
+
+    </script>
+</body>

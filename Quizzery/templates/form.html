@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Quizzery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(250, 250, 249);
+        background-image: url("{% static 'images\i11.jpg' %}");
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .top-container {
+        background-color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .header {
+        padding: 10px 16px;
+        background: rgb(172 172 172);
+        /* /* background-image: url("{% static 'images\a7.jpg' %}"); */
+
+
+        /* Center and scale the image nicely */
+        /* background-position: center;
+            background-repeat: no-repeat; */
+        /* background-size: cover; */
+        color: #f1f1f1;
+        display: flex;
+        height: 100px;
+        align-content: flex-start;
+
+    }
+
+    .box {
+        flex: 1;
+        display: flex;
+
+
+    }
+
+    .box:nth-child(1) {
+        order: 1;
+    }
+
+    .box:nth-child(2) {
+        order: 3;
+    }
+
+    .box:nth-child(3) {
+        order: 2;
+    }
+
+    .box:nth-child(3) {
+        justify-content: right;
+    }
+
+    .box:nth-child(2) {
+        justify-content: right;
+        margin-right: 18px;
+        max-width: 20%;
+    }
+
+    .box:first-child>img {
+        margin-right: auto;
+    }
+
+    .box:nth-child(2)>img {
+        margin-left: auto;
+    }
+
+
+
+    .content {
+        padding: 16px;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .sticky+.content {
+        padding-top: 102px;
+    }
+
+
+
+    .linebreak {
+        width: 0px;
+    }
+
+    #main-content {
+        color: black;
+    }
+
+    /*boot*/
+
+    #profile-icon {
+        font-size: 36px;
+        color: black;
+    }
+
+    #dropdownMenuButton {
+        padding: 0;
+        height: 40px;
+        margin-top: 18px;
+    }
+
+    #quizzery-icon {
+        margin-left: 45px;
+    }
+
+    #main-content {
+        color: black;
+        margin-top: 150px;
+        margin-left: 40px;
+        margin-right: 30px;
+    }
+
+
+    .needs-validation {
+        height: auto;
+        margin: 80px 300px 0 300px;
+        background-color: #e7e6e6;
+    }
+
+    .form-control {
+        background-color: #f1f1f1b1;
+
+    }
+
+    textarea.form-control {
+        height: 100px !important;
+        width: 180% !important;
+    }
+
+
+
+    @media all and (max-width:1096px) {
+        .content {
+            margin-left: 70px;
+        }
+
+        .needs-validation {
+            height: auto;
+            margin: 80px 400px 0 400px;
+        }
+    }
+
+    @media all and (max-width:960px) {
+        .header {
+            flex-flow: row wrap;
+            height: 140px;
+        }
+
+        .box:nth-child(1) {
+            order: 1;
+        }
+
+        .box:nth-child(2) {
+            order: 2;
+        }
+
+        .box:nth-child(3) {
+            order: 3;
+        }
+
+
+
+        .box:nth-child(1) {
+            flex-basis: 50%;
+            height: 80px
+        }
+
+        .box:nth-child(2) {
+            flex-basis: 50%;
+            height: 80px;
+            margin-left: auto;
+        }
+
+        .box:nth-child(3) {
+            flex-basis: 100%;
+            height: 80px;
+
+
+        }
+
+        .search-box {
+            margin-top: 0px;
+            justify-content: right;
+        }
+
+        .box:nth-child(3) {
+            justify-content: right;
+            margin-right: 25px;
+        }
+
+        #sidebarCollapse {
+            margin-top: 70px;
+        }
+
+        #quizzery-icon {
+            margin-left: 0px;
+        }
+
+
+    }
+
+    @media all and (max-width:415px) {
+        .box:nth-child(2) {
+            margin-right: 0px;
+            margin-left: auto;
+        }
+
+        .box:nth-child(3) {
+
+
+            margin-right: 7px;
+        }
+
+    }
+
+    @media all and (max-width:390px) {
+        .box:nth-child(2) {
+            margin-right: 0px;
+            height: 60px;
+            margin-left: auto;
+        }
+
+        .box:nth-child(1) {
+
+            height: 60px;
+        }
+
+        .box:nth-child(3) {
+
+            height: 60px;
+            margin-right: 7px;
+        }
+
+        .box {
+            height: 60px;
+        }
+
+        #quiz {
+            height: 60px;
+            width: 160;
+        }
+
+        #profile-icon {
+            font-size: 25px;
+        }
+
+        #dropdownMenuButton {
+            margin-top: 8px;
+        }
+
+        #sidebarCollapse {
+            margin-top: 50px;
+        }
+
+        .header {
+            flex-flow: row wrap;
+            height: 120px;
+        }
+
+
+
+    }
+</style>
+
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" style="height:100vh;">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4 pt-5">
+                <h1><a href="index.html" class="logo">Quizzes</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="/home">Create Quiz</a>
+                    </li>
+                    <li>
+                        <a href="/oldquizzes">My Quizzes</a>
+                    </li>
+                    <!-- <li>
+                        <a href="/upcoming">Upcoming Quizzes</a>
+                    </li> -->
+        </nav>
+        <div style="width: 100%;">
+            <div class="header" id="myHeader">
+                <div class="box " id="quizzery-icon"><img src="{% static 'images/x1.png'%}" id="quiz" alt="" /></div>
+
+                <div class="box ">
+                    <!--<button class="dropdown-btn"style="background-color: white; height: 43px;margin-top: 18px;border-width: 0px;"-->
+
+                    <button class="btn  " type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                        <i class="fa fa-user-circle-o" id="profile-icon" style=""></i></button>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>&nbsp; &nbsp; Profile</a>
+                        <a class="dropdown-item" href="/index/"><i class="fa fa-sign-out"></i>&nbsp; &nbsp; Log out</a>
+                    </div>
+                </div>
+
+                <!-- <div class="box" >
+            <form class="search-box">
+              <input type="text" placeholder=" "/>
+              <button type="reset"></button>
+            </form>
+            </div> -->
+
+
+            </div>
+            <div id="form--conatiner">
+                <form class="needs-validation" novalidate action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom01">Quiz Name</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Quiz Name"
+                                name="quiz Name" required>
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Description</label>
+                            <textarea type="text" class="form-control" style="height:200px" id="validationCustom02"
+                                name="description" placeholder="Description" required></textarea>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">Start date and time</label>
+                            <input type="datetime-local" min={{datetime}} class="form-control" id="validationCustom03"
+                                placeholder="" name="start time" required>
+                            <div class="invalid-feedback">
+                                Please provide a date and time.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">End date and time</label>
+                            <input type="datetime-local" min={{datetime}} class="form-control" id="validationCustom03"
+                                placeholder="" name="end time" required>
+                            <div class="invalid-feedback">
+                                Please provide a date and time.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">Total quiz time</label>
+                            <input type="number" class="form-control" id="validationCustom03" placeholder="In minutes"
+                                name="quiz time" required>
+                            <div class="invalid-feedback">
+                                Please provide Quiz time.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">Quiz Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Public
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                    value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Private
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        // (function () {
+        //     'use strict';
+        //     window.addEventListener('load', function () {
+        //         // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        //         var forms = document.getElementsByClassName('needs-validation');
+        //         // Loop over them and prevent submission
+        //         var validation = Array.prototype.filter.call(forms, function (form) {
+        //             form.addEventListener('submit', function (event) {
+        //                 if (form.checkValidity() === false) {
+        //                     event.preventDefault();
+        //                     event.stopPropagation();
+        //                 }
+        //                 form.classList.add('was-validated');
+        //             }, false);
+        //         });
+        //     }, false);
+        // })();
+    </script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+</body>
+
+</html>

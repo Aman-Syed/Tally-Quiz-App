@@ -1,0 +1,136 @@
+{% block content %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <title>Quizzery</title>
+    <style>
+        #body {
+            background-image: url("{% static 'images\b.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #container {
+            margin: auto;
+            margin-top: 40px;
+            width: 40%;
+        }
+
+        .card {
+            width: 320px;
+            border: 3px black solid
+        }
+
+        .card-body {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 40px;
+            font-size: 22px;
+        }
+
+        .card-text {
+            font-size: 22px;
+        }
+
+        #end {
+            margin-top: 30px;
+            font-size: 23px;
+            font-weight: 600;
+        }
+
+        #return {
+            color: white;
+            background-color: #343a40;
+            height: 40px;
+            width: 100px;
+            border-radius: 6%;
+            border-width: 0px;
+            transition: all 0.2s linear;
+            margin-right: 40px;
+            font-size: 16px;
+        }
+
+        #return:hover {
+            border: solid 2px #343a40;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            font-size: 18px;
+        }
+
+        @media all and (max-width:600px) {
+            #container {
+
+                margin: auto;
+                margin-top: 30px;
+
+            }
+
+            .card {
+                width: 240px;
+                border: 3px black solid
+            }
+
+            h3 {
+                margin-left: 40px;
+                font-size: 20px;
+            }
+
+            .card-text {
+                font-size: 19px;
+            }
+
+            #end {
+                margin-top: 30px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        @media all and (max-width:430px) {
+            #container {
+                margin: auto;
+                margin-top: 30px;
+                width: 66%;
+
+            }
+
+            #end {
+                margin-top: 30px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    </style>
+
+</head>
+
+<body id="body">
+
+    <div id="container">
+        <div class="card">
+
+            <div class="card-body">
+                <h3 class="card-title">Score: {{score}}</h3>
+                <p class="card-text">Total questions: {{total}}</p>
+
+
+
+                <p class="card-text">Correct answers: {{score}}</p>
+                <p class="card-text">Incorrect answers: {{incorrect}}</p>
+                <p class="card-text">Percentage: {{percentage}}%</p>
+
+
+            </div>
+        </div>
+        <br>
+        <p id="end">Create More !!..<br>Lets Go to home</p>
+        <a href="/index"> <button id="return">Quizzery</button></a>
+
+    </div>
+
+    {% endblock %}
+</body>
